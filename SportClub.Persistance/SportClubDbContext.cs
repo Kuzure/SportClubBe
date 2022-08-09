@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SportClub.Domain.Entity;
 
-namespace SportClubBe.Entity
+namespace SportClubBe.Peristance
 {
     public class SportClubDbContext : DbContext
     {
