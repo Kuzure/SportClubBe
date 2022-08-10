@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using SportClubBe.Entity;
 
-namespace SportClub.Api.CQRS.Command
+namespace SportClub.Api.CQRS
 {
     public class AddGroupCommand : IRequest<Group>
     {

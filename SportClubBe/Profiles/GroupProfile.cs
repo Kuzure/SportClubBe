@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using SportClub.Api.CQRS.Command;
+using SportClub.Api.CQRS;
 using SportClubBe.Entity;
 
 namespace SportClub.Api.Profiles

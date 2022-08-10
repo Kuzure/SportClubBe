@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using MediatR;
-using SportClub.Api.CQRS.Command;
 using SportClub.Api.Interface;
 using SportClubBe.Entity;
 
-namespace SportClub.Api.CQRS.Handler
+namespace SportClub.Api.CQRS
 {
     public class AddGroupCommandHandler : IRequestHandler<AddGroupCommand, Group>
     {

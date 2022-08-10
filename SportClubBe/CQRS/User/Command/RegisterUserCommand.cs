@@ -4,7 +4,7 @@ using SportClubBe.Enum;
 
 namespace SportClub.Api.CQRS.Command
 {
-    public class RegisterUserCommand : IRequest<User>
+    public class RegisterUserCommand : IRequest<SportClubBe.Entity.User>
     {
         public string Email { get; set; } = null!;
         public string Password { get; set; } = null!;

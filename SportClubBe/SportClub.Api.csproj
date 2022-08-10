@@ -24,7 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CQRS\Query\" />
     <Folder Include="Dto\" />
     <Folder Include="Service\" />
   </ItemGroup>

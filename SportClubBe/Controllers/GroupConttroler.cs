@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SportClub.Api.CQRS.Command;
+using SportClub.Api.CQRS;
 using System.Net;
 
 namespace SportClub.Api.Controllers
