@@ -14,6 +14,7 @@ namespace SportClubBe.Entity
         public DbSet<Identity> Identities { get; set; } = null!;
         public DbSet<Role> Roles { get; set; } = null!;
         public DbSet<User> Users { get; set; } = null!;
+        public DbSet<SportClub.Api.Domain.Entity.File> Files { get; set; } = null!;
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -29,6 +30,7 @@ namespace SportClubBe.Entity
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(SportClubDbContext).Assembly);
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Competitor>().Property(x=>x.GroupId).IsRequired(false);
             modelBuilder.Entity<Role>().HasData(
                 new Role()
                 {

@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace SportClubBe.Migrations
+namespace SportClub.Api.Migrations
 {
-    public partial class init : Migration
+    public partial class fix : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,7 +45,7 @@ namespace SportClubBe.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Roles",
+                name: "Role",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -58,7 +58,33 @@ namespace SportClubBe.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Roles", x => x.Id);
+                    table.PrimaryKey("PK_Role", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "File",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FileName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UploadPath = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PathFileName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GroupId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LMDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreateEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LMEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_File", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_File_Group_GroupId",
+                        column: x => x.GroupId,
+                        principalTable: "Group",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -109,9 +135,9 @@ namespace SportClubBe.Migrations
                 {
                     table.PrimaryKey("PK_User", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_User_Roles_RoleId",
+                        name: "FK_User_Role_RoleId",
                         column: x => x.RoleId,
-                        principalTable: "Roles",
+                        principalTable: "Role",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -174,7 +200,7 @@ namespace SportClubBe.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    MedicalExaminationExpiryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    MedicalExaminationExpiryDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Is_Paid = table.Column<bool>(type: "bit", nullable: false),
                     IdentityId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     GroupId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -231,6 +257,21 @@ namespace SportClubBe.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Role",
+                columns: new[] { "Id", "CreateDate", "CreateEmail", "IsActive", "LMDate", "LMEmail", "Name" },
+                values: new object[] { new Guid("60359a55-3c34-4230-a5b6-6c8afa0f17e5"), new DateTime(2022, 8, 13, 21, 12, 16, 741, DateTimeKind.Local).AddTicks(1549), null, true, null, null, "Coach" });
+
+            migrationBuilder.InsertData(
+                table: "Role",
+                columns: new[] { "Id", "CreateDate", "CreateEmail", "IsActive", "LMDate", "LMEmail", "Name" },
+                values: new object[] { new Guid("8be3d024-9f31-41c4-9768-80e2afd5cd0e"), new DateTime(2022, 8, 13, 21, 12, 16, 741, DateTimeKind.Local).AddTicks(1481), null, true, null, null, "Competitor" });
+
+            migrationBuilder.InsertData(
+                table: "Role",
+                columns: new[] { "Id", "CreateDate", "CreateEmail", "IsActive", "LMDate", "LMEmail", "Name" },
+                values: new object[] { new Guid("c1310f5a-6187-4fc4-9de1-450eba8707bc"), new DateTime(2022, 8, 13, 21, 12, 16, 741, DateTimeKind.Local).AddTicks(1552), null, true, null, null, "Admin" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Coach_IdentityId",
                 table: "Coach",
@@ -256,6 +297,12 @@ namespace SportClubBe.Migrations
                 name: "IX_Competitor_IdentityId",
                 table: "Competitor",
                 column: "IdentityId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_File_GroupId",
+                table: "File",
+                column: "GroupId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -289,6 +336,9 @@ namespace SportClubBe.Migrations
                 name: "Competitor");
 
             migrationBuilder.DropTable(
+                name: "File");
+
+            migrationBuilder.DropTable(
                 name: "GroupExercise");
 
             migrationBuilder.DropTable(
@@ -307,7 +357,7 @@ namespace SportClubBe.Migrations
                 name: "User");
 
             migrationBuilder.DropTable(
-                name: "Roles");
+                name: "Role");
         }
     }
 }

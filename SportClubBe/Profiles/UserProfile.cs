@@ -17,6 +17,8 @@ namespace SportClub.Api.Profiles
                 dest.Identity.DateOfBirth = src.DateOfBirth;
                 dest.Identity.Degree = src.Degree;
                 dest.Identity.Gender = src.Gender;
+                dest.Identity.Competitor = new Competitor();
+                dest.Identity.Competitor.Is_Paid = false;
             });
         }
 

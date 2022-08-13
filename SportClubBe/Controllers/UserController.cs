@@ -16,7 +16,7 @@ namespace SportClub.Api.Controllers
         public UserController(IMediator mediator) : base(mediator)
         {
         }
-        [HttpPost]
+        [HttpPost("register")]
         [AllowAnonymous]
         [ProducesResponseType((int)HttpStatusCode.Accepted)]
         public async Task<ActionResult> Create([FromBody] RegisterUserCommand command) =>

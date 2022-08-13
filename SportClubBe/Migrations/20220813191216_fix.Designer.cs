@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SportClubBe.Entity;
 
@@ -11,9 +12,10 @@ using SportClubBe.Entity;
 namespace SportClub.Api.Migrations
 {
     [DbContext(typeof(SportClubDbContext))]
-    partial class SportClubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220813191216_fix")]
+    partial class fix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -151,6 +153,7 @@ namespace SportClub.Api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("GroupId")
+                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("IdentityId")
@@ -367,21 +370,21 @@ namespace SportClub.Api.Migrations
                         new
                         {
                             Id = new Guid("8be3d024-9f31-41c4-9768-80e2afd5cd0e"),
-                            CreateDate = new DateTime(2022, 8, 13, 21, 29, 53, 921, DateTimeKind.Local).AddTicks(5121),
+                            CreateDate = new DateTime(2022, 8, 13, 21, 12, 16, 741, DateTimeKind.Local).AddTicks(1481),
                             IsActive = true,
                             Name = "Competitor"
                         },
                         new
                         {
                             Id = new Guid("60359a55-3c34-4230-a5b6-6c8afa0f17e5"),
-                            CreateDate = new DateTime(2022, 8, 13, 21, 29, 53, 921, DateTimeKind.Local).AddTicks(5156),
+                            CreateDate = new DateTime(2022, 8, 13, 21, 12, 16, 741, DateTimeKind.Local).AddTicks(1549),
                             IsActive = true,
                             Name = "Coach"
                         },
                         new
                         {
                             Id = new Guid("c1310f5a-6187-4fc4-9de1-450eba8707bc"),
-                            CreateDate = new DateTime(2022, 8, 13, 21, 29, 53, 921, DateTimeKind.Local).AddTicks(5160),
+                            CreateDate = new DateTime(2022, 8, 13, 21, 12, 16, 741, DateTimeKind.Local).AddTicks(1552),
                             IsActive = true,
                             Name = "Admin"
                         });
@@ -471,7 +474,9 @@ namespace SportClub.Api.Migrations
                 {
                     b.HasOne("SportClubBe.Entity.Group", "Group")
                         .WithMany("Competitors")
-                        .HasForeignKey("GroupId");
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("SportClubBe.Entity.Identity", "Identity")
                         .WithOne("Competitor")

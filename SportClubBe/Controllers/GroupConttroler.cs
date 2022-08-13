@@ -1,10 +1,12 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SportClub.Api.CQRS;
+using SportClub.Api.CQRS.Group.Command;
 using System.Net;
 
 namespace SportClub.Api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/group")]
     public class GroupConttroler : BaseController

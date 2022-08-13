@@ -1,13 +1,9 @@
-﻿using MediatR;
-using SportClubBe.Entity;
-using SportClubBe.Enum;
+﻿using SportClubBe.Enum;
 
-namespace SportClub.Api.CQRS.Command
+namespace SportClub.Api.Dto
 {
-    public class RegisterUserCommand : IRequest<SportClubBe.Entity.User>
+    public class CompetitorListModel
     {
-        public string Email { get; set; } = null!;
-        public string Password { get; set; } = null!;
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
         public DateTime DateOfBirth { get; set; }
@@ -15,5 +11,7 @@ namespace SportClub.Api.CQRS.Command
         public Gender Gender { get; set; }
         public Degree? Degree { get; set; }
         public bool Is_Paid { get; set; }
+        public DateTime MedicalExaminationExpiryDate { get; set; }
+        public string? GroupName { get; set; }
     }
 }
