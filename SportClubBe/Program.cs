@@ -1,3 +1,4 @@
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -5,10 +6,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using SportClub.Api;
-using SportClub.Api.Interface;
-using SportClub.Api.Repository;
-using SportClubBe.Entity;
-using Swashbuckle.Swagger;
+using SportClub.Application.CQRS.Command;
+using SportClub.Application.Interface;
+using SportClub.Application.Repository;
+using SportClub.Application.Validation;
+using SportClub.Domain.Entity;
+using SportClub.Persistance;
+using System;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -40,7 +44,7 @@ builder.Services.AddSwaggerGen(option =>
                     Id="Bearer"
                 }
             },
-            new string[]{}
+            Array.Empty<string>()
         }
     });
 });
@@ -49,10 +53,11 @@ builder.Services.ConfigureSecurity(builder.Configuration);
 builder.Services.AddCustomCors(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddDbContext<SportClubDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("SportClubDb")));
+builder.Services.AddDbContext<SportClubDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("SportClubDb"),
+    x => x.MigrationsAssembly("SportClub.Persistance")));
 
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddMediatR(typeof(RegisterUserCommand).Assembly);
 
 builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>))
     .AddTransient<IUserRepository, UserRepository>()
@@ -60,14 +65,9 @@ builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>))
 
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
+builder.Services.AddScoped<IValidator<RegisterUserCommand>, RegisterValidation>();
 
-
-builder.Services.AddControllers().AddFluentValidation(options => {
-    options.ImplicitlyValidateChildProperties = true;
-    options.ImplicitlyValidateRootCollectionElements = true;
-    options.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-});
-
+builder.Services.AddFluentValidationAutoValidation();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SportClub.Domain;
+using SportClub.Domain.Entity;
 
 namespace SportClub.Persistance.Configuration
 {

@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SportClub.Api.CQRS.Command;
-using SportClub.Api.CQRS.Query;
-using SportClub.Api.Extension;
+using SportClub.Application.CQRS.Command;
+using SportClub.Application.CQRS.Query;
+using SportClub.Application.Extension;
 using System.Net;
 
 namespace SportClub.Api.Controllers

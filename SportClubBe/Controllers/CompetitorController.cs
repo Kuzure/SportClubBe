@@ -1,9 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SportClub.Api.CQRS.Competitor.Query;
-using SportClub.Api.Dto;
-using SportClub.Api.Extension;
+using SportClub.Application.CQRS.Competitor.Command;
+using SportClub.Application.CQRS.Competitor.Query;
+using SportClub.Application.Dto;
+using SportClub.Application.Extension;
 using System.Net;
 
 namespace SportClub.Api.Controllers
@@ -21,5 +22,9 @@ namespace SportClub.Api.Controllers
         [ProducesResponseType(typeof(Response<IEnumerable<CompetitorListModel>>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetRoomList([FromQuery] GetCompetitorListQuery query) =>
             await ExecuteQuery(async () => await _mediator.Send(query));
+        [HttpPut("Paid")]
+        [ProducesResponseType((int)HttpStatusCode.Accepted)]
+        public async Task<ActionResult> Create([FromBody] UpdateCompetitorPaidCommand command) =>
+            await ExecuteCommand(async () => await _mediator.Send(command));
     }
 }

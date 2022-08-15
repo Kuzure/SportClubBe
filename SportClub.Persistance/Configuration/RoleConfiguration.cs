@@ -3,12 +3,13 @@ using SportClub.Domain.Entity;
 
 namespace SportClub.Persistance.Configuration
 {
-    public class GroupConfiguration : BaseEntityConfiguration<Guid, Group>
+    public class RoleConfiguration : BaseEntityConfiguration<Guid, Role>
     {
-        public GroupConfiguration() : base("Group")
+        public RoleConfiguration() : base("Role")
         {
+
         }
-        public override void Configure(EntityTypeBuilder<Group> builder)
+        public override void Configure(EntityTypeBuilder<Role> builder)
         {
             base.Configure(builder);
         }

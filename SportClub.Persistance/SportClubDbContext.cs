@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SportClub.Domain.Entity;
 
-namespace SportClubBe.Peristance
+namespace SportClub.Persistance
 {
     public class SportClubDbContext : DbContext
     {
@@ -14,6 +14,7 @@ namespace SportClubBe.Peristance
         public DbSet<Identity> Identities { get; set; } = null!;
         public DbSet<Role> Roles { get; set; } = null!;
         public DbSet<User> Users { get; set; } = null!;
+        public DbSet<SportClub.Domain.Entity.File> Files { get; set; } = null!;
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -29,6 +30,23 @@ namespace SportClubBe.Peristance
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(SportClubDbContext).Assembly);
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Competitor>().Property(x=>x.GroupId).IsRequired(false);
+            modelBuilder.Entity<Role>().HasData(
+                new Role()
+                {
+                    Id = Guid.Parse("8BE3D024-9F31-41C4-9768-80E2AFD5CD0E"),
+                    Name = "Competitor",
+                },
+            new Role()
+            {
+                Id = Guid.Parse("60359A55-3C34-4230-A5B6-6C8AFA0F17E5"),
+                Name = "Coach",
+            },
+            new Role()
+            {
+                Id = Guid.Parse("C1310F5A-6187-4FC4-9DE1-450EBA8707BC"),
+                Name = "Admin",
+            });
         }
     }
 }
