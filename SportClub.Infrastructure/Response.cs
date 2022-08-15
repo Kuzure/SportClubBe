@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace SportClub.Application.Extension
+namespace SportClub.Infrastructure
 {
     public class Response<T>
     {

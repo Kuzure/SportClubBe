@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using SportClub.Application.Dto;
 using SportClub.Domain.Entity;
+using SportClub.Infrastructure.Models;
 
 namespace SportClub.Application.Profiles
 {

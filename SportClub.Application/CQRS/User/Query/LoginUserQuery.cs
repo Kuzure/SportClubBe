@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using SportClub.Application.Extension;
+using SportClub.Infrastructure;
 
 namespace SportClub.Application.CQRS.Query
 {

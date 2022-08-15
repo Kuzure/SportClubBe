@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using MediatR;
-using SportClub.Application.Dto;
-using SportClub.Application.Extension;
 using SportClub.Application.Interface;
+using SportClub.Infrastructure;
+using SportClub.Infrastructure.Models;
 
 namespace SportClub.Application.CQRS.Competitor.Query
 {

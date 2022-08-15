@@ -1,4 +1,4 @@
-﻿namespace SportClub.Application.Dto
+﻿namespace SportClub.Infrastructure.Models
 {
     public class UpdateCompetitorsPaidListModel
     {

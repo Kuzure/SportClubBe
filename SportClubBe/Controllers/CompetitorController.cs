@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SportClub.Application.CQRS.Competitor.Command;
 using SportClub.Application.CQRS.Competitor.Query;
-using SportClub.Application.Dto;
-using SportClub.Application.Extension;
+using SportClub.Infrastructure;
+using SportClub.Infrastructure.Models;
 using System.Net;
 
 namespace SportClub.Api.Controllers

@@ -1,6 +1,6 @@
 ﻿using SportClub.Domain.Enum;
 
-namespace SportClub.Application.Dto
+namespace SportClub.Infrastructure.Models
 {
     public class CompetitorListModel
     {

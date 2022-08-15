@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SportClub.Application.CQRS.Command;
 using SportClub.Application.CQRS.Query;
-using SportClub.Application.Extension;
+using SportClub.Infrastructure;
 using System.Net;
 
 namespace SportClub.Api.Controllers
