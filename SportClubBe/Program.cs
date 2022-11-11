@@ -64,6 +64,7 @@ builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>))
     .AddTransient<ICompetitorRepository, CompetitorRepository>();
 
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+builder.Services.AddScoped<IPasswordHasher<Competitor>, PasswordHasher<Competitor>>();
 
 builder.Services.AddScoped<IValidator<RegisterUserCommand>, RegisterValidation>();
 

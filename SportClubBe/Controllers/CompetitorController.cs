@@ -18,13 +18,18 @@ namespace SportClub.Api.Controllers
         {
 
         }
-        [HttpGet("list")]
-        [ProducesResponseType(typeof(Response<IEnumerable<CompetitorListModel>>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult> GetRoomList([FromQuery] GetCompetitorListQuery query) =>
+        [HttpGet("pageable")]
+        [ProducesResponseType(typeof(PaginationResponse<IEnumerable<CompetitorListModel>>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult> GetCompetitorList([FromQuery] GetCompetitorListQuery query) =>
             await ExecuteQuery(async () => await _mediator.Send(query));
         [HttpPut("Paid")]
         [ProducesResponseType((int)HttpStatusCode.Accepted)]
         public async Task<ActionResult> Create([FromBody] UpdateCompetitorPaidCommand command) =>
+            await ExecuteCommand(async () => await _mediator.Send(command));
+
+        [HttpPost("Add")]
+        [ProducesResponseType((int)HttpStatusCode.Accepted)]
+        public async Task<ActionResult> Add([FromBody] AddCompetitorCommand command) =>
             await ExecuteCommand(async () => await _mediator.Send(command));
     }
 }
