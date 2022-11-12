@@ -24,8 +24,7 @@ namespace SportClub.Application.Profiles
                 .ForMember(dest => dest.DateOfBirth, opt => opt.MapFrom(src => src.Identity.DateOfBirth))
                 .ForMember(dest => dest.Degree, opt => opt.MapFrom(src => src.Identity.Degree))
                 .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.Identity.PhoneNumber))
-                .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Identity.Gender))
-                .ForMember(dest => dest.Email, otp => otp.MapFrom(src => src.Identity.User.Email)).ReverseMap();
+                .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Identity.Gender)).ReverseMap();
         }
     }
     public static class EnumExtensionMethods  

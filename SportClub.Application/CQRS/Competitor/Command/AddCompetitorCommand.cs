@@ -13,6 +13,4 @@ public class AddCompetitorCommand : IRequest<Domain.Entity.Competitor>
     public string PhoneNumber { get; set; } = null!;
     public Gender Gender { get; set; }
     public Degree? Degree { get; set; }
-    public string Email { get; set; } = null!;
-    public string Password { get; set; } = null!;
 }

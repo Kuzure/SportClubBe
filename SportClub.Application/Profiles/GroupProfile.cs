@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using SportClub.Application.CQRS.Group.Command;
+using SportClub.Application.CQRS.Group.Query;
 using SportClub.Domain.Entity;
+using SportClub.Infrastructure.Models;
 
 namespace SportClub.Application.Profiles
 {
@@ -9,6 +11,7 @@ namespace SportClub.Application.Profiles
         public GroupProfile()
         {
             CreateMap<Group, AddGroupCommand>().ReverseMap();
+            CreateMap<Group, GroupListModel >().ReverseMap();
         }
         
     }

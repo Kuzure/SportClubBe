@@ -30,7 +30,8 @@ namespace SportClub.Persistance
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(SportClubDbContext).Assembly);
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Competitor>().Property(x=>x.GroupId).IsRequired(false);
+            modelBuilder.Entity<Competitor>().Property(x => x.GroupId).IsRequired(false);
+            modelBuilder.Entity<Identity>().Property(x => x.UserId).IsRequired(false);
             modelBuilder.Entity<Role>().HasData(
                 new Role()
                 {

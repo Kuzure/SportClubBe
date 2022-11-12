@@ -61,7 +61,8 @@ builder.Services.AddMediatR(typeof(RegisterUserCommand).Assembly);
 
 builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>))
     .AddTransient<IUserRepository, UserRepository>()
-    .AddTransient<ICompetitorRepository, CompetitorRepository>();
+    .AddTransient<ICompetitorRepository, CompetitorRepository>()
+    .AddTransient<IGroupRepository,GroupRepository>();
 
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<IPasswordHasher<Competitor>, PasswordHasher<Competitor>>();

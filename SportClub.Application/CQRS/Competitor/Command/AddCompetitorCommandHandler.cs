@@ -23,9 +23,6 @@ public class AddCompetitorCommandHandler: IRequestHandler<AddCompetitorCommand, 
     public async Task<SportClub.Domain.Entity.Competitor> Handle(AddCompetitorCommand request, CancellationToken cancellationToken)
     {
         var entity = _mapper.Map<SportClub.Domain.Entity.Competitor>(request);
-        entity.Identity.User.Password = _passwordHasger.HashPassword(entity, request.Password);
-        var role = await _roleRepository.GetByPredicate(x => x.Name == "Competitor");
-        entity.Identity.User.RoleId = role.Id;
         await _repository.Save(entity);
         return default!;
     }
