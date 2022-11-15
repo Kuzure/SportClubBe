@@ -26,7 +26,7 @@ namespace SportClub.Application.CQRS.User.Command
             var entity = _mapper.Map<SportClub.Domain.Entity.User>(request);
             entity.Password = _passwordHasger.HashPassword(entity, request.Password);
             var role = await _roleRepository.GetByPredicate(x => x.Name == "Competitor");
-            entity.RoleId = role.Id;
+            entity.RoleId = role!.Id;
             await _repository.Save(entity);
             return default!;
         }

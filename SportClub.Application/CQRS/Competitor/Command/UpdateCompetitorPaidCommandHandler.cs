@@ -17,11 +17,9 @@ namespace SportClub.Application.CQRS.Competitor.Command
         {
 
             var competitor = await _repository.GetById(request.Id);
-            if(competitor != null)
-            {
-                competitor.Is_Paid = request.Is_Paid;
-                await _repository.Update(competitor);
-            }
+            if (competitor == null) return default!;
+            competitor.Is_Paid = request.Is_Paid;
+            await _repository.Update(competitor);
             return default!;
         }
     }
