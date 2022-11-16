@@ -14,5 +14,7 @@ namespace SportClub.Infrastructure.Models
         public bool Is_Paid { get; set; }
         public DateTime MedicalExaminationExpiryDate { get; set; }
         public string? GroupName { get; set; }
+        
+        public Guid? GroupId { get; set; }
     }
 }

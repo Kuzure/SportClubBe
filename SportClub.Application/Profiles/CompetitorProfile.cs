@@ -17,6 +17,7 @@ namespace SportClub.Application.Profiles
                 .ForMember(dest => dest.Degree, opt => opt.MapFrom(src => src.Identity.Degree.ToString()))
                 .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.Identity.PhoneNumber))
                 .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Identity.Gender.GetEnumDescription()))
+                .ForMember(dest => dest.GroupId, opt => opt.MapFrom(src => src.Group. Id))
                 .ForMember(dest => dest.GroupName, opt => opt.MapFrom(src => src.Group.Name)).ReverseMap();
             CreateMap<Competitor, AddCompetitorCommand>()
                 .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.Identity.FirstName))
