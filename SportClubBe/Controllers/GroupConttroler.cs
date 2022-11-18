@@ -18,6 +18,10 @@ namespace SportClub.Api.Controllers
         public GroupController(IMediator mediator) : base(mediator) 
         {
         }
+        [HttpGet("id")]
+        [ProducesResponseType(typeof(Response<GroupDetailsModel>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult> GetGroupById([FromQuery] GetGroupByIdQuery query) =>
+            await ExecuteQuery(async () => await _mediator.Send(query));
         [HttpGet]
         [ProducesResponseType(typeof(Response<IEnumerable<GroupListModel>>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetGroupList([FromQuery] GetGroupsQuery query) =>
@@ -30,5 +34,9 @@ namespace SportClub.Api.Controllers
         [ProducesResponseType(typeof(PaginationResponse<IEnumerable<GroupListModel>>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetGroupListPageable([FromQuery] GetGroupListQuery query) =>
             await ExecuteQuery(async () => await _mediator.Send(query));
+        [HttpPut("")]
+        [ProducesResponseType((int)HttpStatusCode.Accepted)]
+        public async Task<ActionResult> Create([FromBody] UpdateGroupCommand command) =>
+            await ExecuteCommand(async () => await _mediator.Send(command));
     }
 }

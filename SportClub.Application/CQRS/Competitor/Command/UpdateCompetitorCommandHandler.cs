@@ -30,6 +30,7 @@ public class UpdateCompetitorCommandHandler: IRequestHandler<UpdateCompetitorCom
         competitor.Identity.DateOfBirth = request.DateOfBirth;
         competitor.Identity.PhoneNumber = request.PhoneNumber;
         await _competitorRepository.Update(competitor);
+        _dbContext.SaveChangesAsync();
         return default!;
     }
 }

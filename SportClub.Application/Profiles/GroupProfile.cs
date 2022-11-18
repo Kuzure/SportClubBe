@@ -12,6 +12,7 @@ namespace SportClub.Application.Profiles
         {
             CreateMap<Group, AddGroupCommand>().ReverseMap();
             CreateMap<Group, GroupListModel >().ReverseMap();
+            CreateMap<Group, GroupDetailsModel >().ReverseMap();
         }
         
     }

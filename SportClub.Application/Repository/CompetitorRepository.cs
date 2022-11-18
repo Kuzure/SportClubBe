@@ -18,6 +18,10 @@ namespace SportClub.Application.Repository
         public async Task<IEnumerable<Competitor>> GetPageable(int page, int itemsPerPage) =>
             await _dbContext.Competitors.Include(x => x.Group).Include(x => x.Identity).OrderBy(x => x.Id)
                 .Skip((page - 1) * itemsPerPage).Take(itemsPerPage).ToListAsync();
-        public async Task<Competitor?> GetById(Guid Id) => await _dbContext.Competitors.Include(x=>x.Group).Include(x=>x.Identity).FirstOrDefaultAsync(x => x.Id == Id && x.IsActive);
+        public async Task<Competitor?> GetById(Guid id) => await _dbContext.Competitors.Include(x=>x.Group).Include(x=>x.Identity).FirstOrDefaultAsync(x => x.Id == id && x.IsActive);
+
+        public async Task<IEnumerable<Competitor>> GetByGroupId(Guid id) =>
+            await _dbContext.Competitors.Include(x => x.Group).Include(x => x.Identity)
+                .Where(x => x.GroupId == id && x.IsActive).ToListAsync();
     }
 }
