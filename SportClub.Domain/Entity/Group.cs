@@ -2,7 +2,7 @@
 {
     public class Group : BaseEntity<Guid>
     {
-        public string Name { get; set; } = null!;
+        public string? Name { get; set; } = null!;
         public virtual IEnumerable<Competitor> Competitors { get; set; } = null!;
         public ICollection<CoachGroup> CoachGroups { get; set; } = null!;
         public ICollection<GroupExercise> GroupExercises { get; set; } = null!;

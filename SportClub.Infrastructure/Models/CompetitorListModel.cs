@@ -9,7 +9,7 @@ namespace SportClub.Infrastructure.Models
         public string LastName { get; set; } = null!;
         public DateTime DateOfBirth { get; set; }
         public string PhoneNumber { get; set; } = null!;
-        public string Gender { get; set; }
+        public string? Gender { get; set; }
         public string? Degree { get; set; }
         public bool Is_Paid { get; set; }
         public DateTime MedicalExaminationExpiryDate { get; set; }

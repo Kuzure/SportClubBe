@@ -14,11 +14,17 @@ using SportClub.Domain.Entity;
 using SportClub.Persistance;
 using System;
 using System.Reflection;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options => 
+{ 
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    options.JsonSerializerOptions.WriteIndented = true;
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(option =>
@@ -62,6 +68,8 @@ builder.Services.AddMediatR(typeof(RegisterUserCommand).Assembly);
 builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>))
     .AddTransient<IUserRepository, UserRepository>()
     .AddTransient<ICompetitorRepository, CompetitorRepository>()
+    .AddTransient<ICoachRepository, CoachRepository>()
+    .AddTransient<ICoachGroupsRepository, CoachGroupRepository>()
     .AddTransient<IGroupRepository,GroupRepository>();
 
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();

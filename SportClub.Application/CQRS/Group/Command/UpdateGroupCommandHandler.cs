@@ -22,7 +22,7 @@ public class UpdateGroupCommandHandler: IRequestHandler<UpdateGroupCommand, Spor
         if (group == null) return default!;
         group.Name = request.Name;
         _dbContext.Update(group);
-        _dbContext.SaveChangesAsync();
+        await _dbContext.SaveChangesAsync();
         return default!;
     }
 }

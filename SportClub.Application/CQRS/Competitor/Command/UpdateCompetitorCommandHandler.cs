@@ -25,12 +25,13 @@ public class UpdateCompetitorCommandHandler: IRequestHandler<UpdateCompetitorCom
         competitor.Is_Paid = request.Is_Paid;
         competitor.Identity.FirstName = request.FirstName;
         competitor.Identity.LastName = request.LastName;
-        competitor.Identity.Degree = (Degree)Enum.Parse(typeof(Degree), request.Degree, true);
+        if (request.Degree != null)
+            competitor.Identity.Degree = (Degree)Enum.Parse(typeof(Degree), request.Degree, true);
         competitor.Identity.Gender = (Gender)Enum.Parse(typeof(Gender), request.Gender, true);
         competitor.Identity.DateOfBirth = request.DateOfBirth;
         competitor.Identity.PhoneNumber = request.PhoneNumber;
         await _competitorRepository.Update(competitor);
-        _dbContext.SaveChangesAsync();
+        await _dbContext.SaveChangesAsync();
         return default!;
     }
 }
