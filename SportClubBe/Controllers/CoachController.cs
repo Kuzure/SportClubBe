@@ -31,4 +31,12 @@ public class CoachController : BaseController
     [ProducesResponseType(typeof(Response<string>), (int)HttpStatusCode.OK)]
     public async Task<ActionResult> AddCompetitorToGroup([FromBody] AddCoachToGroupQuery query) =>
         await ExecuteQuery(async () => await _mediator.Send(query));
-    }
+    [HttpGet("")]
+    [ProducesResponseType(typeof(Response<CoachListModel>), (int)HttpStatusCode.OK)]
+    public async Task<ActionResult> GetCoachById([FromQuery] GetCoachByIdQuery query) =>
+        await ExecuteQuery(async () => await _mediator.Send(query));
+    [HttpPut("")]
+    [ProducesResponseType((int)HttpStatusCode.Accepted)]
+    public async Task<ActionResult> Update([FromBody] UpdateCoachCommand command) =>
+        await ExecuteCommand(async () => await _mediator.Send(command));
+}

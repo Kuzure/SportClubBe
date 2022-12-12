@@ -19,25 +19,20 @@ public class AddCoachToGroupQueryHandler : IRequestHandler<AddCoachToGroupQuery,
         _mapper = mapper;
         _repositoryCoachGroup = repositoryCoachGroup;
     }
-/// <summary>
-/// ustawić jakoś dodawanmie trenerów do grup
-/// </summary>
-/// <param name="query"></param>
-/// <param name="cancellationToken"></param>
-/// <returns></returns>
     public async Task<Response<string>> Handle(AddCoachToGroupQuery query, CancellationToken cancellationToken)
     {
         var entity = await _repository.GetById(query.Id);
-        if (entity == null || query.GroupListId == null)
+        if (entity == null)
             return default!;
         var coachGroups = new List<CoachGroup>();
-        foreach (var guid in query.GroupListId)
-        {
-            var coachGroup = new CoachGroup();
-            coachGroup.CoachId = query.Id;
-            coachGroup.GroupId = guid;
-            coachGroups.Add(coachGroup);
-        }
+        if (query.GroupListId != null)
+            foreach (var guid in query.GroupListId)
+            {
+                var coachGroup = new CoachGroup();
+                coachGroup.CoachId = query.Id;
+                coachGroup.GroupId = guid;
+                coachGroups.Add(coachGroup);
+            }
 
         entity.CoachGroups = coachGroups;
         await _repository.Update(entity);

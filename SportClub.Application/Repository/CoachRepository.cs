@@ -23,6 +23,6 @@ public class CoachRepository: Repository<Coach>, ICoachRepository
         throw new NotImplementedException();
     }
 
-    public async Task<Coach?> GetById(Guid id) => await _dbContext.Coaches.Include(x=>x.CoachGroups).Include(x=>x.Identity).FirstOrDefaultAsync(x => x.Id == id && x.IsActive);
+    public async Task<Coach?> GetById(Guid id) => await _dbContext.Coaches.Include(x=>x.CoachGroups).ThenInclude(x=>x.Group).Include(x=>x.Identity).FirstOrDefaultAsync(x => x.Id == id && x.IsActive);
     
 }
