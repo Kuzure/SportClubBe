@@ -70,6 +70,7 @@ builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>))
     .AddTransient<ICompetitorRepository, CompetitorRepository>()
     .AddTransient<ICoachRepository, CoachRepository>()
     .AddTransient<ICoachGroupsRepository, CoachGroupRepository>()
+    .AddTransient<IExerciseRepository, ExerciseRepository>()
     .AddTransient<IGroupRepository,GroupRepository>();
 
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();

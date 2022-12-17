@@ -11,21 +11,6 @@ public class CoachGroupRepository: Repository<CoachGroup>, ICoachGroupsRepositor
     public CoachGroupRepository(SportClubDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
     {
     }
-    
-    public Task<CoachGroup?> GetById(Guid id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<IEnumerable<CoachGroup>> GetPageable(int page, int itemsPerPage)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<IEnumerable<CoachGroup>> GetByGroupId(Guid id)
-    {
-        throw new NotImplementedException();
-    }
     public async Task<CoachGroup?> GetIfExistByGroupId(Guid groupId) => await _dbContext.CoacheGroups.Include(x=>x.Group).FirstOrDefaultAsync(x => x.GroupId == groupId && x.IsActive);
 
 }
