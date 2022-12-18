@@ -8,4 +8,5 @@ public interface ICoachRepository: IRepository<Coach>
     Task<Coach?> GetById(Guid id);
     Task<IEnumerable<Coach>> GetPageable(int page, int itemsPerPage);
     new Task<Coach> Update(Coach competitor);
+    Task<IEnumerable<Coach>> GetCoachByGroupId(Guid id);
 }

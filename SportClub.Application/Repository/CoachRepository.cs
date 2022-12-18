@@ -19,5 +19,7 @@ public class CoachRepository: Repository<Coach>, ICoachRepository
             .Skip((page - 1) * itemsPerPage).Take(itemsPerPage).ToListAsync();
     
     public async Task<Coach?> GetById(Guid id) => await _dbContext.Coaches.Include(x=>x.CoachGroups).ThenInclude(x=>x.Group).Include(x=>x.Identity).FirstOrDefaultAsync(x => x.Id == id && x.IsActive);
-    
+    public async Task<IEnumerable<Coach>> GetCoachByGroupId(Guid id) =>
+        await _dbContext.Coaches.Include(x => x.CoachGroups).ThenInclude(x=>x.Group).Include(x => x.Identity)
+            .Where(x => x.CoachGroups.Any(y=>y.GroupId==id)&& x.IsActive).ToListAsync();
 }

@@ -10,11 +10,15 @@ public class GetGroupByIdQueryHandler : IRequestHandler<GetGroupByIdQuery, Group
 {
     private readonly IGroupRepository _groupRepository;
     private readonly ICompetitorRepository _competitorRepository;
+    private readonly ICoachRepository _coachRepository;
     private readonly IMapper _mapper;
     private readonly SportClubDbContext _dbContext;
+    private readonly IExerciseRepository _exerciseRepository;
 
-    public GetGroupByIdQueryHandler(IGroupRepository groupRepository, IMapper mapper, SportClubDbContext dbContext,ICompetitorRepository competitorRepository)
+    public GetGroupByIdQueryHandler(IExerciseRepository exerciseRepository,ICoachRepository coachRepository,IGroupRepository groupRepository, IMapper mapper, SportClubDbContext dbContext,ICompetitorRepository competitorRepository)
     {
+        _exerciseRepository = exerciseRepository;
+        _coachRepository = coachRepository;
         _groupRepository = groupRepository;
         _mapper = mapper;
         _dbContext = dbContext;
@@ -27,7 +31,13 @@ public class GetGroupByIdQueryHandler : IRequestHandler<GetGroupByIdQuery, Group
         var result = _mapper.Map<GroupDetailsModel>(entities);
         var competitors = await _competitorRepository.GetByGroupId(request.Id);
         var  competitorModels= _mapper.Map<IEnumerable<CompetitorModel>>(competitors);
+        var coaches = await _coachRepository.GetCoachByGroupId(request.Id);
+        var  coachModels= _mapper.Map<IEnumerable<CoachListModel>>(coaches);
+        var exercise = await _exerciseRepository.GetByGroupId(request.Id);
+        var  exerciseModels= _mapper.Map<IEnumerable<ExerciseListModel>>(exercise);
         result.CompetitorModels = competitorModels;
+        result.CoachListModels = coachModels;
+        result.ExerciseListModels = exerciseModels;
         return result;
     }
 }

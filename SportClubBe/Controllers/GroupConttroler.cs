@@ -38,5 +38,9 @@ namespace SportClub.Api.Controllers
         [ProducesResponseType((int)HttpStatusCode.Accepted)]
         public async Task<ActionResult> Create([FromBody] UpdateGroupCommand command) =>
             await ExecuteCommand(async () => await _mediator.Send(command));
+        [HttpDelete("")]
+        [ProducesResponseType((int)HttpStatusCode.Accepted)]
+        public async Task<ActionResult> Delete([FromQuery] DeleteGroupCommand command) =>
+            await ExecuteQuery(async () => await _mediator.Send(command));
     }
 }

@@ -4,6 +4,7 @@ using SportClub.Application.Interface;
 using SportClub.Domain.Entity;
 using SportClub.Persistance;
 using System.Linq.Expressions;
+using SportClub.Infrastructure.Models;
 
 namespace SportClub.Application.Repository
 {
@@ -23,5 +24,7 @@ namespace SportClub.Application.Repository
         public async Task<IEnumerable<Competitor>> GetByGroupId(Guid id) =>
             await _dbContext.Competitors.Include(x => x.Group).Include(x => x.Identity)
                 .Where(x => x.GroupId == id && x.IsActive).ToListAsync();
+       
+        
     }
 }

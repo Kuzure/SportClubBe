@@ -43,9 +43,17 @@ namespace SportClub.Api.Controllers
             await ExecuteCommand(async () => await _mediator.Send(command));
         
         [HttpPost("addToGroup")]
-        [AllowAnonymous]
         [ProducesResponseType(typeof(Response<string>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> AddCompetitorToGroup([FromBody] AddCompetitorToGroupQuery query) =>
+            await ExecuteQuery(async () => await _mediator.Send(query));
+        [HttpDelete("")]
+        [ProducesResponseType((int)HttpStatusCode.Accepted)]
+        public async Task<ActionResult> Delete([FromQuery] DeleteCompetitorCommand command) =>
+            await ExecuteQuery(async () => await _mediator.Send(command));
+        
+        [HttpPut("disconnectedCompetitorFromGroup")]
+        [ProducesResponseType(typeof(Response<string>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult> DisconnectCompetitor([FromQuery] DisconnectCompetitorQuery query) =>
             await ExecuteQuery(async () => await _mediator.Send(query));
     }
 }

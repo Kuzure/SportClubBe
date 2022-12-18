@@ -39,4 +39,12 @@ public class ExerciseController: BaseController
     [ProducesResponseType((int)HttpStatusCode.Accepted)]
     public async Task<ActionResult> Update([FromBody] UpdateExerciseCommand command) =>
         await ExecuteCommand(async () => await _mediator.Send(command));
+    [HttpDelete("")]
+    [ProducesResponseType((int)HttpStatusCode.Accepted)]
+    public async Task<ActionResult> Delete([FromQuery] DeleteExerciseCommand command) =>
+        await ExecuteQuery(async () => await _mediator.Send(command));
+    [HttpPut("disconnectedExerciseFromGroup")]
+    [ProducesResponseType(typeof(Response<string>), (int)HttpStatusCode.OK)]
+    public async Task<ActionResult> DisconnectExercise([FromQuery] DisconnectExerciseQuery query) =>
+        await ExecuteQuery(async () => await _mediator.Send(query));
 }

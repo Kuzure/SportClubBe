@@ -39,4 +39,12 @@ public class CoachController : BaseController
     [ProducesResponseType((int)HttpStatusCode.Accepted)]
     public async Task<ActionResult> Update([FromBody] UpdateCoachCommand command) =>
         await ExecuteCommand(async () => await _mediator.Send(command));
+    [HttpDelete("")]
+    [ProducesResponseType((int)HttpStatusCode.Accepted)]
+    public async Task<ActionResult> Delete([FromQuery] DeleteCoachCommand command) =>
+        await ExecuteQuery(async () => await _mediator.Send(command));
+    [HttpPut("disconnectedCoachFromGroup")]
+    [ProducesResponseType(typeof(Response<string>), (int)HttpStatusCode.OK)]
+    public async Task<ActionResult> DisconnectCompetitor([FromQuery] DisconnectCoachQuery query) =>
+        await ExecuteQuery(async () => await _mediator.Send(query));
 }
