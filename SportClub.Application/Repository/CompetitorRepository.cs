@@ -24,7 +24,9 @@ namespace SportClub.Application.Repository
         public async Task<IEnumerable<Competitor>> GetByGroupId(Guid id) =>
             await _dbContext.Competitors.Include(x => x.Group).Include(x => x.Identity)
                 .Where(x => x.GroupId == id && x.IsActive).ToListAsync();
-       
-        
+
+        public async Task<IEnumerable<Competitor>> GetAllWithNoGroup() =>
+            await _dbContext.Competitors.Include(x => x.Group).Include(x => x.Identity).Where(x => x.GroupId == null).ToListAsync();
+
     }
 }

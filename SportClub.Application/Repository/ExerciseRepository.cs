@@ -23,4 +23,8 @@ public class ExerciseRepository : Repository<Exercise>, IExerciseRepository
     public async Task<IEnumerable<Exercise>> GetByGroupId(Guid id) =>
         await _dbContext.Exercises.Include(x => x.GroupExercises).ThenInclude(x => x.Group)
             .Where(x => x.GroupExercises.Any(x => x.GroupId == id) && x.IsActive).ToListAsync();
+    
+    public async Task<IEnumerable<Exercise>> GetAllWithNoGroup(Guid groupId) =>
+        await _dbContext.Exercises.Include(x => x.GroupExercises).ThenInclude(x=>x.Group).Where(x => x.GroupExercises.Any(y=>y.GroupId==groupId)==false).ToListAsync();
+
 }

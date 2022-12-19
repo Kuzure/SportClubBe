@@ -9,4 +9,5 @@ public interface IExerciseRepository: IRepository<Exercise>
     Task<IEnumerable<Exercise>> GetPageable(int page, int itemsPerPage);
     new Task<Exercise> Update(Exercise exercise);
     Task<IEnumerable<Exercise>> GetByGroupId(Guid id);
+    Task<IEnumerable<Exercise>> GetAllWithNoGroup(Guid groupId);
 }

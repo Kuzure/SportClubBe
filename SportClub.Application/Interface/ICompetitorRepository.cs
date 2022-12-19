@@ -10,5 +10,6 @@ namespace SportClub.Application.Interface
         Task<IEnumerable<Competitor>> GetPageable(int page, int itemsPerPage);
         new Task<Competitor> Update(Competitor competitor);
         Task<IEnumerable<Competitor>> GetByGroupId(Guid id);
+         Task<IEnumerable<Competitor>> GetAllWithNoGroup();
     }
 }

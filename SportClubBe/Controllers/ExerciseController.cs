@@ -47,4 +47,13 @@ public class ExerciseController: BaseController
     [ProducesResponseType(typeof(Response<string>), (int)HttpStatusCode.OK)]
     public async Task<ActionResult> DisconnectExercise([FromQuery] DisconnectExerciseQuery query) =>
         await ExecuteQuery(async () => await _mediator.Send(query));
+    [HttpGet("all")]
+    [ProducesResponseType(typeof(Response<IEnumerable<ExerciseListModel>>), (int)HttpStatusCode.OK)]
+    public async Task<ActionResult> GetExerciseList([FromQuery] GetExerciseQuery query) =>
+        await ExecuteQuery(async () => await _mediator.Send(query));
+    
+    [HttpPut("AddExerciseToGroup")]
+    [ProducesResponseType((int)HttpStatusCode.Accepted)]
+    public async Task<ActionResult> AddExerciseToGroupCommand([FromBody] AddExerciseToGroupCommand command) =>
+        await ExecuteCommand(async () => await _mediator.Send(command));
 }

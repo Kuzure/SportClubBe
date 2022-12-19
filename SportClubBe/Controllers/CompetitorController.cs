@@ -55,5 +55,13 @@ namespace SportClub.Api.Controllers
         [ProducesResponseType(typeof(Response<string>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> DisconnectCompetitor([FromQuery] DisconnectCompetitorQuery query) =>
             await ExecuteQuery(async () => await _mediator.Send(query));
+        [HttpGet("all")]
+        [ProducesResponseType(typeof(Response<IEnumerable<CompetitorModel>>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult> GetCompetitorList([FromQuery] GetCompetitorsQuery query) =>
+            await ExecuteQuery(async () => await _mediator.Send(query));
+        [HttpPut("AddCompetitorsToGroup")]
+        [ProducesResponseType((int)HttpStatusCode.Accepted)]
+        public async Task<ActionResult> AddCoaches([FromBody] AddCompetitorsToGroupCommand command) =>
+            await ExecuteCommand(async () => await _mediator.Send(command));
     }
 }

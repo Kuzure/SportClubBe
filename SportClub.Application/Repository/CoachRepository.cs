@@ -22,4 +22,7 @@ public class CoachRepository: Repository<Coach>, ICoachRepository
     public async Task<IEnumerable<Coach>> GetCoachByGroupId(Guid id) =>
         await _dbContext.Coaches.Include(x => x.CoachGroups).ThenInclude(x=>x.Group).Include(x => x.Identity)
             .Where(x => x.CoachGroups.Any(y=>y.GroupId==id)&& x.IsActive).ToListAsync();
+    public async Task<IEnumerable<Coach>> GetAllWithNoGroup(Guid groupId) =>
+        await _dbContext.Coaches.Include(x => x.CoachGroups).ThenInclude(x=>x.Group).Include(x => x.Identity).Where(x => x.CoachGroups.Any(y=>y.GroupId==groupId)==false).ToListAsync();
+
 }

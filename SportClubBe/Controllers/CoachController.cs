@@ -45,6 +45,14 @@ public class CoachController : BaseController
         await ExecuteQuery(async () => await _mediator.Send(command));
     [HttpPut("disconnectedCoachFromGroup")]
     [ProducesResponseType(typeof(Response<string>), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult> DisconnectCompetitor([FromQuery] DisconnectCoachQuery query) =>
+    public async Task<ActionResult> DisconnectCoach([FromQuery] DisconnectCoachQuery query) =>
         await ExecuteQuery(async () => await _mediator.Send(query));
+    [HttpGet("all")]
+    [ProducesResponseType(typeof(Response<IEnumerable<CoachListModel>>), (int)HttpStatusCode.OK)]
+    public async Task<ActionResult> GetCoachList([FromQuery] GetCoachesQuery query) =>
+        await ExecuteQuery(async () => await _mediator.Send(query));
+    [HttpPut("AddCoachesToGroup")]
+    [ProducesResponseType((int)HttpStatusCode.Accepted)]
+    public async Task<ActionResult> AddCoaches([FromBody] AddCoachesToGroupCommand command) =>
+        await ExecuteCommand(async () => await _mediator.Send(command));
 }
