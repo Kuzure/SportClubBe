@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using SportClub.Application.Interface;
 using SportClub.Infrastructure;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 
@@ -27,12 +28,24 @@ namespace SportClub.Application.CQRS.User.Query
         {
             var user = await _userRepository.GetByPredicate(x => x.Email == request.Email);
             if (user is null)
-                throw new Exception("User credentials are wrong!");
-
+            {
+                var badResponse = new Response<string>("Błędny Login")
+                {
+                    Code = HttpStatusCode.BadRequest,
+                    IsError = true
+                };
+                return badResponse;
+            }
             var passwordVerifyResult = _passwordHasher.VerifyHashedPassword(user, user.Password, request.Password);
             if (passwordVerifyResult == PasswordVerificationResult.Failed)
-                throw new Exception("User credentials are wrong!");
-
+            {
+                var badResponse =new Response<string>("Błędne Hasło")
+                {
+                    Code = HttpStatusCode.BadRequest,
+                    IsError = true
+                };
+                return badResponse;
+            }
             //everything is ok! generate the JWT Bearer
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(_configuration.GetSection("JWTConfiguration:SecretKey").Get<string>());
