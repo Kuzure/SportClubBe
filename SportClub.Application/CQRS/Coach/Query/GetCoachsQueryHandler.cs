@@ -10,13 +10,11 @@ public class GetCoachesQueryHandler: IRequestHandler<GetCoachesQuery, IEnumerabl
 {
     private readonly ICoachRepository _coachRepository;
     private readonly IMapper _mapper;
-    private readonly SportClubDbContext _dbContext;
 
-    public GetCoachesQueryHandler(ICoachRepository coachRepository, IMapper mapper,SportClubDbContext dbContext)
+    public GetCoachesQueryHandler(ICoachRepository coachRepository, IMapper mapper)
     {
         _coachRepository = coachRepository;
         _mapper = mapper;
-        _dbContext = dbContext;
     }
 
     public async Task<IEnumerable<CoachListModel>> Handle(GetCoachesQuery request, CancellationToken cancellationToken)
