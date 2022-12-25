@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using SportClub.Application.CQRS.Command;
 using SportClub.Application.Interface;
 using SportClub.Domain.Entity;
 

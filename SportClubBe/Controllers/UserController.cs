@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SportClub.Application.CQRS.Command;
-using SportClub.Application.CQRS.Query;
 using SportClub.Infrastructure;
 using System.Net;
+using SportClub.Application.CQRS.User.Command;
+using SportClub.Application.CQRS.User.Query;
 
 namespace SportClub.Api.Controllers
 {
@@ -20,11 +20,11 @@ namespace SportClub.Api.Controllers
         [AllowAnonymous]
         [ProducesResponseType((int)HttpStatusCode.Accepted)]
         public async Task<ActionResult> Create([FromBody] RegisterUserCommand command) =>
-            await ExecuteCommand(async () => await _mediator.Send(command));
+            await ExecuteCommand(async () => await Mediator.Send(command));
         [HttpPost("login")]
         [AllowAnonymous]
         [ProducesResponseType(typeof(Response<string>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> LoginUser([FromBody] LoginUserQuery query) =>
-            await ExecuteQuery(async () => await _mediator.Send(query));
+            await ExecuteQuery(async () => await Mediator.Send(query));
     }
 }

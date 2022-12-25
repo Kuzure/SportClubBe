@@ -5,13 +5,11 @@ namespace SportClub.Api.Controllers
 {
     public abstract class BaseController : ControllerBase
     {
-        private const int _queryResponse = 200;
-        private const int _commandResponse = 202;
-        public readonly IMediator _mediator;
+        protected readonly IMediator Mediator;
 
         protected BaseController(IMediator mediator)
         {
-            _mediator = mediator;
+            Mediator = mediator;
         }
 
         protected async Task<ActionResult> ExecuteCommand(Func<Task> command)

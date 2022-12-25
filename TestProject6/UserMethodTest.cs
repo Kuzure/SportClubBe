@@ -73,8 +73,8 @@ public class UserMethodTest
     {
         var repo = new Mock<IUserRepository>();
         var x = repo.Object;
-        x.GetByPredicate(x=>x.Email=="www@wp.pl");
+        x.GetByPredicate(user=>user.Email=="www@wp.pl");
         
-        repo.Verify(r => r.GetByPredicate(x=>x.Email=="www@wp.pl"), Times.Once);
+        repo.Verify(r => r.GetByPredicate(user=>user.Email=="www@wp.pl"), Times.Once);
     }
 }

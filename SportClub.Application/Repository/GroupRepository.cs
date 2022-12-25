@@ -13,9 +13,9 @@ public class GroupRepository : Repository<Group>, IGroupRepository
     }
 
     public override async Task<IEnumerable<Group>> GetAll() =>
-        await _dbContext.Groups.Where(x=>x.IsActive).ToListAsync();
+        await DbContext.Groups.Where(x=>x.IsActive).ToListAsync();
 
     public async Task<IEnumerable<Group>> GetPageable(int page, int itemsPerPage) =>
-        await _dbContext.Groups.OrderBy(x => x.Id)
+        await DbContext.Groups.OrderBy(x => x.Id)
             .Skip((page - 1) * itemsPerPage).Take(itemsPerPage).ToListAsync();
 }

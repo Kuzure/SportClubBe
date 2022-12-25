@@ -6,7 +6,7 @@ namespace SportClub.Application.CQRS.Competitor.Command;
 public class AddCompetitorCommand : IRequest<Domain.Entity.Competitor>
 {
     public DateTime? MedicalExaminationExpiryDate { get; set; }
-    public bool Is_Paid { get; set; }
+    public bool IsPaid { get; set; }
     public string FirstName { get; set; } = null!;
     public string LastName { get; set; } = null!;
     public DateTime DateOfBirth { get; set; }

@@ -14,6 +14,6 @@ namespace SportClub.Application.Repository
         }
 
         public override async Task<User?> GetByPredicate(Expression<Func<User, bool>> expression) =>
-            await _dbContext.Users.Include(x => x.Role).Include(x => x.Identity).FirstOrDefaultAsync(expression);
+            await DbContext.Users.Include(x => x.Role).Include(x => x.Identity).FirstOrDefaultAsync(expression);
     }
 }

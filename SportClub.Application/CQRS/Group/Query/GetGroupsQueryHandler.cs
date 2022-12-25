@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using SportClub.Application.Interface;
-using SportClub.Infrastructure;
 using SportClub.Infrastructure.Models;
-using SportClub.Persistance;
 
 namespace SportClub.Application.CQRS.Group.Query;
 
@@ -11,13 +9,11 @@ public class GetGroupsQueryHandler: IRequestHandler<GetGroupsQuery,IEnumerable<G
 {
     private readonly IGroupRepository _groupRepository;
     private readonly IMapper _mapper;
-    private readonly SportClubDbContext _dbContext;
 
-    public GetGroupsQueryHandler(IGroupRepository groupRepository, IMapper mapper, SportClubDbContext dbContext)
+    public GetGroupsQueryHandler(IGroupRepository groupRepository, IMapper mapper)
     {
         _groupRepository = groupRepository;
         _mapper = mapper;
-        _dbContext = dbContext;
     }
     public async Task<IEnumerable<GroupListModel>> Handle(GetGroupsQuery request, CancellationToken cancellationToken)
     {

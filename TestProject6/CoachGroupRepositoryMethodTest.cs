@@ -1,6 +1,5 @@
 ﻿using Moq;
 using SportClub.Application.Interface;
-using SportClub.Application.Repository;
 using SportClub.Domain.Entity;
 
 namespace TestProject6;

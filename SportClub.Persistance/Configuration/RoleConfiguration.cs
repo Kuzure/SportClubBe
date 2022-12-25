@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SportClub.Domain.Entity;
+﻿using SportClub.Domain.Entity;
 
 namespace SportClub.Persistance.Configuration
 {
@@ -8,10 +7,6 @@ namespace SportClub.Persistance.Configuration
         public RoleConfiguration() : base("Role")
         {
 
-        }
-        public override void Configure(EntityTypeBuilder<Role> builder)
-        {
-            base.Configure(builder);
         }
     }
 }

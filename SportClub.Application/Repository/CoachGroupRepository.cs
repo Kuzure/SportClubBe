@@ -11,6 +11,6 @@ public class CoachGroupRepository: Repository<CoachGroup>, ICoachGroupsRepositor
     public CoachGroupRepository(SportClubDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
     {
     }
-    public async Task<CoachGroup?> GetIfExistByGroupId(Guid groupId) => await _dbContext.CoacheGroups.Include(x=>x.Group).FirstOrDefaultAsync(x => x.GroupId == groupId && x.IsActive);
+    public async Task<CoachGroup?> GetIfExistByGroupId(Guid groupId) => await DbContext.CoachGroups.Include(x=>x.Group).FirstOrDefaultAsync(x => x.GroupId == groupId && x.IsActive);
 
 }

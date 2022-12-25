@@ -2,7 +2,6 @@
 using MediatR;
 using SportClub.Application.Interface;
 using SportClub.Infrastructure.Models;
-using SportClub.Persistance;
 
 namespace SportClub.Application.CQRS.Exercise.Query;
 
@@ -10,13 +9,11 @@ public class GetExerciseByIdQueryHandler: IRequestHandler<GetExerciseByIdQuery,E
 {
     private readonly IExerciseRepository _exerciseRepository;
     private readonly IMapper _mapper;
-    private readonly SportClubDbContext _dbContext;
 
-    public GetExerciseByIdQueryHandler(IExerciseRepository exerciseRepository, IMapper mapper,SportClubDbContext dbContext)
+    public GetExerciseByIdQueryHandler(IExerciseRepository exerciseRepository, IMapper mapper)
     {
         _exerciseRepository = exerciseRepository;
         _mapper = mapper;
-        _dbContext = dbContext;
     }
     public async Task<ExerciseListModel> Handle(GetExerciseByIdQuery request, CancellationToken cancellationToken)
     {

@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using MediatR;
-using SportClub.Application.CQRS.Coach.Command;
+﻿using MediatR;
 using SportClub.Application.Interface;
 using SportClub.Domain.Entity;
 using SportClub.Infrastructure;
@@ -10,14 +8,10 @@ namespace SportClub.Application.CQRS.Coach.Query;
 public class AddCoachToGroupQueryHandler : IRequestHandler<AddCoachToGroupQuery, Response<string>>
 {
     private readonly ICoachRepository _repository;
-    private readonly ICoachGroupsRepository _repositoryCoachGroup;
-    private readonly IMapper _mapper;
 
-    public AddCoachToGroupQueryHandler(ICoachRepository repository,ICoachGroupsRepository repositoryCoachGroup, IMapper mapper)
+    public AddCoachToGroupQueryHandler(ICoachRepository repository)
     {
         _repository = repository;
-        _mapper = mapper;
-        _repositoryCoachGroup = repositoryCoachGroup;
     }
     public async Task<Response<string>> Handle(AddCoachToGroupQuery query, CancellationToken cancellationToken)
     {

@@ -2,7 +2,6 @@
 using MediatR;
 using SportClub.Application.Interface;
 using SportClub.Infrastructure.Models;
-using SportClub.Persistance;
 
 namespace SportClub.Application.CQRS.Coach.Query;
 

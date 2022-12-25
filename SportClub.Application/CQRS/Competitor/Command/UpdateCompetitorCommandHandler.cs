@@ -22,7 +22,7 @@ public class UpdateCompetitorCommandHandler: IRequestHandler<UpdateCompetitorCom
         if (competitor == null) return default!;
         competitor.GroupId = request.GroupId;
         competitor.MedicalExaminationExpiryDate = request.MedicalExaminationExpiryDate;
-        competitor.Is_Paid = request.Is_Paid;
+        competitor.IsPaid = request.IsPaid;
         competitor.Identity.FirstName = request.FirstName;
         competitor.Identity.LastName = request.LastName;
         if (request.Degree != null)

@@ -1,5 +1,4 @@
 ﻿using SportClub.Domain.Entity;
-using System.Linq.Expressions;
 
 namespace SportClub.Application.Interface
 {

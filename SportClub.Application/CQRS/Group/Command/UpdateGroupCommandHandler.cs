@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using SportClub.Application.CQRS.Group.Query;
 using SportClub.Application.Interface;
 using SportClub.Persistance;
 

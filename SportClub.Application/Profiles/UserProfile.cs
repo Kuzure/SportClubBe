@@ -1,6 +1,6 @@
 ﻿
 using AutoMapper;
-using SportClub.Application.CQRS.Command;
+using SportClub.Application.CQRS.User.Command;
 using SportClub.Domain.Entity;
 
 namespace SportClub.Application.Profiles
@@ -20,7 +20,7 @@ namespace SportClub.Application.Profiles
                 dest.Identity.Degree = src.Degree;
                 dest.Identity.Gender = src.Gender;
                 dest.Identity.Competitor = new Competitor();
-                dest.Identity.Competitor.Is_Paid = false;
+                dest.Identity.Competitor.IsPaid = false;
             });
             CreateMap<User, RegisterUserCommand>();
         }

@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using AutoMapper;
+﻿using AutoMapper;
 using SportClub.Application.CQRS.Coach.Command;
 using SportClub.Domain.Entity;
 using SportClub.Infrastructure.Models;

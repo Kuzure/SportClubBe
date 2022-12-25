@@ -9,61 +9,61 @@ namespace SportClub.Application.Repository
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
-        protected readonly SportClubDbContext _dbContext;
-        protected readonly IMapper _mapper;
+        protected readonly SportClubDbContext DbContext;
+        protected readonly IMapper Mapper;
 
         public Repository(SportClubDbContext dbContext, IMapper mapper)
         {
-            _dbContext = dbContext;
-            _mapper = mapper;
+            DbContext = dbContext;
+            Mapper = mapper;
         }
 
         public virtual async Task<TEntity> Save(TEntity entity)
         {
-            await _dbContext.Set<TEntity>().AddAsync(entity);
-            await _dbContext.SaveChangesAsync();
+            await DbContext.Set<TEntity>().AddAsync(entity);
+            await DbContext.SaveChangesAsync();
             return entity;
         }
 
         public virtual async Task<TEntity> Update<TKey, TModel>(TKey id, TModel model)
         {
-            var existingEntity = await _dbContext.Set<TEntity>().FindAsync(id);
+            var existingEntity = await DbContext.Set<TEntity>().FindAsync(id);
             if (existingEntity == null)
             {
                 throw new Exception("Entity With provided Id does not exist");
             }
-            _mapper.Map(model, existingEntity);
-            await _dbContext.SaveChangesAsync();
+            Mapper.Map(model, existingEntity);
+            await DbContext.SaveChangesAsync();
 
             return existingEntity;
         }
         public virtual async Task<TEntity> Update(TEntity entity)
         {
-            _dbContext.Set<TEntity>().Update(entity);
-            await _dbContext.SaveChangesAsync();
+            DbContext.Set<TEntity>().Update(entity);
+            await DbContext.SaveChangesAsync();
             return entity;
         }
 
         public virtual async Task Delete<TKey>(TKey id)
         {
-            var existingEntity = await _dbContext.Set<TEntity>().FindAsync(id);
+            var existingEntity = await DbContext.Set<TEntity>().FindAsync(id);
             if (existingEntity != null)
             {
-                _dbContext.Remove(existingEntity);
-                await _dbContext.SaveChangesAsync();
+                DbContext.Remove(existingEntity);
+                await DbContext.SaveChangesAsync();
             }
         }
 
         public virtual async Task<IEnumerable<TEntity>> GetAll()
         {
-            var entities = await _dbContext.Set<TEntity>().ToListAsync();
+            var entities = await DbContext.Set<TEntity>().ToListAsync();
             return entities;
         }
 
         public virtual async Task<TEntity?> GetById<TKey>(TKey id) =>
-            await _dbContext.Set<TEntity>().FindAsync(id);
+            await DbContext.Set<TEntity>().FindAsync(id);
 
         public virtual async Task<TEntity?> GetByPredicate(Expression<Func<TEntity, bool>> expression) =>
-            await _dbContext.Set<TEntity>().Where(expression).FirstOrDefaultAsync();
+            await DbContext.Set<TEntity>().Where(expression).FirstOrDefaultAsync();
     }
 }

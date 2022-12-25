@@ -11,7 +11,7 @@ public class UpdateCompetitorCommand: IRequest<SportClub.Domain.Entity.Competito
     public string PhoneNumber { get; set; }= null!;
     public string Gender { get; set; }= null!;
     public string? Degree { get; set; }
-    public bool Is_Paid { get; set; }
+    public bool IsPaid { get; set; }
     public DateTime MedicalExaminationExpiryDate { get; set; }
     public Guid? GroupId { get; set; }
 }

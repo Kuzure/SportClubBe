@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using SportClub.Application.Interface;
-using SportClub.Infrastructure;
 using SportClub.Infrastructure.Models;
-using SportClub.Persistance;
 
 namespace SportClub.Application.CQRS.Competitor.Query;
 
@@ -11,13 +9,11 @@ public class GetCompetitorsQueryHandler: IRequestHandler<GetCompetitorsQuery, IE
 {
     private readonly ICompetitorRepository _competitorRepository;
     private readonly IMapper _mapper;
-    private readonly SportClubDbContext _dbContext;
 
-    public GetCompetitorsQueryHandler(ICompetitorRepository competitorRepository, IMapper mapper,SportClubDbContext dbContext)
+    public GetCompetitorsQueryHandler(ICompetitorRepository competitorRepository, IMapper mapper)
     {
         _competitorRepository = competitorRepository;
         _mapper = mapper;
-        _dbContext = dbContext;
     }
 
     public async Task<IEnumerable<CompetitorModel>> Handle(GetCompetitorsQuery request, CancellationToken cancellationToken)

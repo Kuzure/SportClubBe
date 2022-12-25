@@ -2,7 +2,6 @@
 using MediatR;
 using SportClub.Application.Interface;
 using SportClub.Infrastructure.Models;
-using SportClub.Persistance;
 
 namespace SportClub.Application.CQRS.Group.Query;
 
@@ -12,16 +11,14 @@ public class GetGroupByIdQueryHandler : IRequestHandler<GetGroupByIdQuery, Group
     private readonly ICompetitorRepository _competitorRepository;
     private readonly ICoachRepository _coachRepository;
     private readonly IMapper _mapper;
-    private readonly SportClubDbContext _dbContext;
     private readonly IExerciseRepository _exerciseRepository;
 
-    public GetGroupByIdQueryHandler(IExerciseRepository exerciseRepository,ICoachRepository coachRepository,IGroupRepository groupRepository, IMapper mapper, SportClubDbContext dbContext,ICompetitorRepository competitorRepository)
+    public GetGroupByIdQueryHandler(IExerciseRepository exerciseRepository,ICoachRepository coachRepository,IGroupRepository groupRepository, IMapper mapper,ICompetitorRepository competitorRepository)
     {
         _exerciseRepository = exerciseRepository;
         _coachRepository = coachRepository;
         _groupRepository = groupRepository;
         _mapper = mapper;
-        _dbContext = dbContext;
         _competitorRepository = competitorRepository;
     }
 

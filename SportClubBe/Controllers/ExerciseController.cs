@@ -20,40 +20,40 @@ public class ExerciseController: BaseController
     [HttpPost("")]
     [ProducesResponseType((int)HttpStatusCode.Accepted)]
     public async Task<ActionResult> Add([FromBody] AddExerciseCommand command) =>
-        await ExecuteCommand(async () => await _mediator.Send(command));
+        await ExecuteCommand(async () => await Mediator.Send(command));
     
     [HttpGet("pageable")]
     [ProducesResponseType(typeof(PaginationResponse<IEnumerable<ExerciseListModel>>), (int)HttpStatusCode.OK)]
     public async Task<ActionResult> GetExerciseList([FromQuery] GetExerciseListQuery query) =>
-        await ExecuteQuery(async () => await _mediator.Send(query));
+        await ExecuteQuery(async () => await Mediator.Send(query));
     [HttpPut("addToGroup")]
     [AllowAnonymous]
     [ProducesResponseType(typeof(Response<string>), (int)HttpStatusCode.OK)]
     public async Task<ActionResult> AddExerciseToGroup([FromBody] AddExerciseToGroupQuery query) =>
-        await ExecuteQuery(async () => await _mediator.Send(query));
+        await ExecuteQuery(async () => await Mediator.Send(query));
     [HttpGet("")]
     [ProducesResponseType(typeof(Response<ExerciseListModel>), (int)HttpStatusCode.OK)]
     public async Task<ActionResult> GetCoachById([FromQuery] GetExerciseByIdQuery query) =>
-        await ExecuteQuery(async () => await _mediator.Send(query));
+        await ExecuteQuery(async () => await Mediator.Send(query));
     [HttpPut("")]
     [ProducesResponseType((int)HttpStatusCode.Accepted)]
     public async Task<ActionResult> Update([FromBody] UpdateExerciseCommand command) =>
-        await ExecuteCommand(async () => await _mediator.Send(command));
+        await ExecuteCommand(async () => await Mediator.Send(command));
     [HttpDelete("")]
     [ProducesResponseType((int)HttpStatusCode.Accepted)]
     public async Task<ActionResult> Delete([FromQuery] DeleteExerciseCommand command) =>
-        await ExecuteQuery(async () => await _mediator.Send(command));
+        await ExecuteQuery(async () => await Mediator.Send(command));
     [HttpPut("disconnectedExerciseFromGroup")]
     [ProducesResponseType(typeof(Response<string>), (int)HttpStatusCode.OK)]
     public async Task<ActionResult> DisconnectExercise([FromQuery] DisconnectExerciseQuery query) =>
-        await ExecuteQuery(async () => await _mediator.Send(query));
+        await ExecuteQuery(async () => await Mediator.Send(query));
     [HttpGet("all")]
     [ProducesResponseType(typeof(Response<IEnumerable<ExerciseListModel>>), (int)HttpStatusCode.OK)]
     public async Task<ActionResult> GetExerciseList([FromQuery] GetExerciseQuery query) =>
-        await ExecuteQuery(async () => await _mediator.Send(query));
+        await ExecuteQuery(async () => await Mediator.Send(query));
     
     [HttpPut("AddExerciseToGroup")]
     [ProducesResponseType((int)HttpStatusCode.Accepted)]
     public async Task<ActionResult> AddExerciseToGroupCommand([FromBody] AddExerciseToGroupCommand command) =>
-        await ExecuteCommand(async () => await _mediator.Send(command));
+        await ExecuteCommand(async () => await Mediator.Send(command));
 }

@@ -1,6 +1,4 @@
-﻿using SportClub.Domain.Entity;
-
-namespace SportClub.Infrastructure.Models;
+﻿namespace SportClub.Infrastructure.Models;
 
 public class CoachListModel
 {

@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using SportClub.Application.CQRS.Command;
+using SportClub.Application.CQRS.User.Command;
 using SportClub.Persistance;
 
 namespace SportClub.Application.Validation

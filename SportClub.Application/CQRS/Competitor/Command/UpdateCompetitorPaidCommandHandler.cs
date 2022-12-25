@@ -1,8 +1,6 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using SportClub.Application.Interface;
-using SportClub.Domain.Entity;
-using System.Linq;
+
 namespace SportClub.Application.CQRS.Competitor.Command
 {
     public class UpdateCompetitorPaidCommandHandler : IRequestHandler<UpdateCompetitorPaidCommand, SportClub.Domain.Entity.Competitor>
@@ -18,7 +16,7 @@ namespace SportClub.Application.CQRS.Competitor.Command
 
             var competitor = await _repository.GetById(request.Id);
             if (competitor == null) return default!;
-            competitor.Is_Paid = request.Is_Paid;
+            competitor.IsPaid = request.IsPaid;
             await _repository.Update(competitor);
             return default!;
         }

@@ -8,9 +8,9 @@
     {
         public TKey Id { get; set; } 
         public DateTime? CreateDate { get; set; }
-        public DateTime? LMDate { get; set; }
+        public DateTime? LmDate { get; set; }
         public string? CreateEmail { get; set; }
-        public string? LMEmail { get; set; }
+        public string? LmEmail { get; set; }
         public bool IsActive { get; set; }
         public BaseEntity()
         {

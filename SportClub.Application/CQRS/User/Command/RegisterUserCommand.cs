@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using SportClub.Domain.Enum;
 
-namespace SportClub.Application.CQRS.Command
+namespace SportClub.Application.CQRS.User.Command
 {
     public class RegisterUserCommand : IRequest<SportClub.Domain.Entity.User>
     {
@@ -13,6 +13,6 @@ namespace SportClub.Application.CQRS.Command
         public string PhoneNumber { get; set; } = null!;
         public Gender Gender { get; set; }
         public Degree? Degree { get; set; }
-        public bool Is_Paid { get; set; }
+        public bool IsPaid { get; set; }
     }
 }

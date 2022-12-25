@@ -13,7 +13,7 @@ public class CompetitorMethodTest
         var competitor = new Competitor()
         {
             GroupId = Guid.NewGuid(),
-            Is_Paid = true,
+            IsPaid = true,
             MedicalExaminationExpiryDate = DateTime.Now,
             IdentityId = Guid.NewGuid(),
             Id = Guid.NewGuid()
@@ -30,7 +30,7 @@ public class CompetitorMethodTest
         var competitor = new Competitor()
         {
             GroupId = Guid.NewGuid(),
-            Is_Paid = true,
+            IsPaid = true,
             MedicalExaminationExpiryDate = DateTime.Now,
             IdentityId = Guid.NewGuid(),
             Id = Guid.NewGuid()

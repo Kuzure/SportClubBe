@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using SportClub.Application.Interface;
 using SportClub.Domain.Entity;
 using SportClub.Infrastructure;
@@ -9,11 +8,10 @@ namespace SportClub.Application.CQRS.Exercise.Query;
 public class DisconnectExerciseQueryHandler: IRequestHandler<DisconnectExerciseQuery,Response<string>>
 {
     private readonly IExerciseRepository _repository;
-    private readonly IMapper _mapper;
-    public DisconnectExerciseQueryHandler(IExerciseRepository repository, IMapper mapper)
+
+    public DisconnectExerciseQueryHandler(IExerciseRepository repository)
     {
         _repository = repository;
-        _mapper = mapper;
     }
 
     public async Task<Response<string>> Handle(DisconnectExerciseQuery query, CancellationToken cancellationToken)

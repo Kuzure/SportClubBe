@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using SportClub.Infrastructure;
 
-namespace SportClub.Application.CQRS.Coach.Command;
+namespace SportClub.Application.CQRS.Coach.Query;
 
 public class AddCoachToGroupQuery: IRequest<Response<string>>
 {

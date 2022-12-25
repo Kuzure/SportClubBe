@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace SportClub.Application.CQRS.Group.Query;
+namespace SportClub.Application.CQRS.Group.Command;
 
 public class UpdateGroupCommand: IRequest<SportClub.Domain.Entity.Group>
 {

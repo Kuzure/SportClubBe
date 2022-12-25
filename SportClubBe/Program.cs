@@ -3,18 +3,15 @@ using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using SportClub.Api;
-using SportClub.Application.CQRS.Command;
 using SportClub.Application.Interface;
 using SportClub.Application.Repository;
 using SportClub.Application.Validation;
 using SportClub.Domain.Entity;
 using SportClub.Persistance;
-using System;
-using System.Reflection;
 using System.Text.Json.Serialization;
+using SportClub.Application.CQRS.User.Command;
 
 var builder = WebApplication.CreateBuilder(args);
 

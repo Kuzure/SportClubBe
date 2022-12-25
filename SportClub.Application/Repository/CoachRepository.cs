@@ -12,17 +12,17 @@ public class CoachRepository: Repository<Coach>, ICoachRepository
     {
     }
     public override async Task<IEnumerable<Coach>> GetAll() =>
-        await _dbContext.Coaches.Include(x => x.CoachGroups).Include(x=>x.Identity).ToListAsync();
+        await DbContext.Coaches.Include(x => x.CoachGroups).Include(x=>x.Identity).ToListAsync();
 
     public async Task<IEnumerable<Coach>> GetPageable(int page, int itemsPerPage) =>
-        await _dbContext.Coaches.Include(x => x.CoachGroups).ThenInclude(x=>x.Group).Include(x => x.Identity).OrderBy(x => x.Id)
+        await DbContext.Coaches.Include(x => x.CoachGroups).ThenInclude(x=>x.Group).Include(x => x.Identity).OrderBy(x => x.Id)
             .Skip((page - 1) * itemsPerPage).Take(itemsPerPage).ToListAsync();
     
-    public async Task<Coach?> GetById(Guid id) => await _dbContext.Coaches.Include(x=>x.CoachGroups).ThenInclude(x=>x.Group).Include(x=>x.Identity).FirstOrDefaultAsync(x => x.Id == id && x.IsActive);
+    public async Task<Coach?> GetById(Guid id) => await DbContext.Coaches.Include(x=>x.CoachGroups).ThenInclude(x=>x.Group).Include(x=>x.Identity).FirstOrDefaultAsync(x => x.Id == id && x.IsActive);
     public async Task<IEnumerable<Coach>> GetCoachByGroupId(Guid id) =>
-        await _dbContext.Coaches.Include(x => x.CoachGroups).ThenInclude(x=>x.Group).Include(x => x.Identity)
+        await DbContext.Coaches.Include(x => x.CoachGroups).ThenInclude(x=>x.Group).Include(x => x.Identity)
             .Where(x => x.CoachGroups.Any(y=>y.GroupId==id)&& x.IsActive).ToListAsync();
     public async Task<IEnumerable<Coach>> GetAllWithNoGroup(Guid groupId) =>
-        await _dbContext.Coaches.Include(x => x.CoachGroups).ThenInclude(x=>x.Group).Include(x => x.Identity).Where(x => x.CoachGroups.Any(y=>y.GroupId==groupId)==false).ToListAsync();
+        await DbContext.Coaches.Include(x => x.CoachGroups).ThenInclude(x=>x.Group).Include(x => x.Identity).Where(x => x.CoachGroups.Any(y=>y.GroupId==groupId)==false).ToListAsync();
 
 }

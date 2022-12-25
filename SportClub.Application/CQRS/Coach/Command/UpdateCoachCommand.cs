@@ -1,6 +1,4 @@
 ﻿using MediatR;
-using SportClub.Domain.Enum;
-using SportClub.Infrastructure.Models;
 
 namespace SportClub.Application.CQRS.Coach.Command;
 

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SportClub.Persistance;
 
@@ -11,9 +12,10 @@ using SportClub.Persistance;
 namespace SportClub.Persistance.Migrations
 {
     [DbContext(typeof(SportClubDbContext))]
-    partial class SportClubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221225151831_isPaid")]
+    partial class isPaid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

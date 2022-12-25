@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using SportClub.Infrastructure;
 
-namespace SportClub.Application.CQRS.Query
+namespace SportClub.Application.CQRS.User.Query
 {
     public class LoginUserQuery : IRequest<Response<string>>
     {

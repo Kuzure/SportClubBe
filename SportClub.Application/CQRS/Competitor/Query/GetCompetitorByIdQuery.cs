@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using SportClub.Infrastructure;
 using SportClub.Infrastructure.Models;
 
 namespace SportClub.Application.CQRS.Competitor.Query;

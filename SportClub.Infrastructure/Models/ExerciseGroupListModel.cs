@@ -3,5 +3,5 @@
 public class ExerciseGroupListModel
 {
     public Guid GroupId { get; set; }
-    public string GroupName { get; set; }
+    public string? GroupName { get; set; }
 }

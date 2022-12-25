@@ -2,7 +2,6 @@
 using MediatR;
 using SportClub.Application.Interface;
 using SportClub.Infrastructure.Models;
-using SportClub.Persistance;
 
 namespace SportClub.Application.CQRS.Coach.Query;
 
@@ -10,13 +9,11 @@ public class GetCoachByIdQueryHandler: IRequestHandler<GetCoachByIdQuery,CoachLi
 {
     private readonly ICoachRepository _coachRepository;
     private readonly IMapper _mapper;
-    private readonly SportClubDbContext _dbContext;
 
-    public GetCoachByIdQueryHandler(ICoachRepository coachRepository, IMapper mapper,SportClubDbContext dbContext)
+    public GetCoachByIdQueryHandler(ICoachRepository coachRepository, IMapper mapper)
     {
         _coachRepository = coachRepository;
         _mapper = mapper;
-        _dbContext = dbContext;
     }
     public async Task<CoachListModel> Handle(GetCoachByIdQuery request, CancellationToken cancellationToken)
     {

@@ -12,19 +12,19 @@ public class ExerciseRepository : Repository<Exercise>, IExerciseRepository
     {
     }
     public override async Task<IEnumerable<Exercise>> GetAll() =>
-        await _dbContext.Exercises.Include(x => x.GroupExercises).ToListAsync();
+        await DbContext.Exercises.Include(x => x.GroupExercises).ToListAsync();
 
     public async Task<IEnumerable<Exercise>> GetPageable(int page, int itemsPerPage) =>
-        await _dbContext.Exercises.Include(x => x.GroupExercises).ThenInclude(x=>x.Group).OrderBy(x => x.Id)
+        await DbContext.Exercises.Include(x => x.GroupExercises).ThenInclude(x=>x.Group).OrderBy(x => x.Id)
             .Skip((page - 1) * itemsPerPage).Take(itemsPerPage).ToListAsync();
 
-    public async Task<Exercise?> GetById(Guid id) => await _dbContext.Exercises.Include(x=>x.GroupExercises).FirstOrDefaultAsync(x => x.Id == id && x.IsActive);
+    public async Task<Exercise?> GetById(Guid id) => await DbContext.Exercises.Include(x=>x.GroupExercises).FirstOrDefaultAsync(x => x.Id == id && x.IsActive);
 
     public async Task<IEnumerable<Exercise>> GetByGroupId(Guid id) =>
-        await _dbContext.Exercises.Include(x => x.GroupExercises).ThenInclude(x => x.Group)
-            .Where(x => x.GroupExercises.Any(x => x.GroupId == id) && x.IsActive).ToListAsync();
+        await DbContext.Exercises.Include(x => x.GroupExercises).ThenInclude(x => x.Group)
+            .Where(x => x.GroupExercises.Any(groupExercise => groupExercise.GroupId == id) && x.IsActive).ToListAsync();
     
     public async Task<IEnumerable<Exercise>> GetAllWithNoGroup(Guid groupId) =>
-        await _dbContext.Exercises.Include(x => x.GroupExercises).ThenInclude(x=>x.Group).Where(x => x.GroupExercises.Any(y=>y.GroupId==groupId)==false).ToListAsync();
+        await DbContext.Exercises.Include(x => x.GroupExercises).ThenInclude(x=>x.Group).Where(x => x.GroupExercises.Any(y=>y.GroupId==groupId)==false).ToListAsync();
 
 }
