@@ -57,7 +57,7 @@ builder.Services.AddCustomCors(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddDbContext<SportClubDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("SportClubDb"),
-    x => x.MigrationsAssembly("SportClub.Persistance")));
+    x => x.MigrationsAssembly("SportClub.Persistence")));
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddMediatR(typeof(RegisterUserCommand).Assembly);

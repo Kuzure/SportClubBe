@@ -24,7 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SportClub.Domain\SportClub.Domain.csproj" />
     <ProjectReference Include="..\SportClub.Infrastructure\SportClub.Infrastructure.csproj" />
-    <ProjectReference Include="..\SportClub.Persistance\SportClub.Persistance.csproj" />
+    <ProjectReference Include="..\SportClub.Persistence\SportClub.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

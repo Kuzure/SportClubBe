@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportClub.Api", "SportClubB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportClub.Domain", "SportClub.Domain\SportClub.Domain.csproj", "{7D94BEB2-E007-4EF0-93C1-F7216722D620}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportClub.Persistance", "SportClub.Persistance\SportClub.Persistance.csproj", "{CA1968BD-6A73-41AC-B413-6F88CDF83937}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportClub.Persistence", "SportClub.Persistence\SportClub.Persistence.csproj", "{CA1968BD-6A73-41AC-B413-6F88CDF83937}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportClub.Application", "SportClub.Application\SportClub.Application.csproj", "{C4ADE80E-0CF5-4F4B-9819-B3BE1CEE6CDD}"
 EndProject
