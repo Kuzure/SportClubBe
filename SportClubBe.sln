@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportClub.Application", "Sp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportClub.Infrastructure", "SportClub.Infrastructure\SportClub.Infrastructure.csproj", "{A406E420-836B-43F2-94EF-6BBF9394644C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject6", "TestProject6\TestProject6.csproj", "{222D14ED-6A6F-422D-9760-28445EEF79EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportClub.Test", "SportClub.Test\SportClub.Test.csproj", "{222D14ED-6A6F-422D-9760-28445EEF79EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
