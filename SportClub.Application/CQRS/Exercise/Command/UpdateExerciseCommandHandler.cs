@@ -21,8 +21,9 @@ public class UpdateExerciseCommandHandler: IRequestHandler<UpdateExerciseCommand
         if (exercise == null) return default!;
         exercise.Name = request.Name;
         exercise.Description = request.Description;
+        exercise.Repetitions = request.Repetitions;
         await _exerciseRepository.Update(exercise);
-        await _dbContext.SaveChangesAsync();
+        await _dbContext.SaveChangesAsync(cancellationToken);
         return default!;
     }
 }

@@ -15,6 +15,7 @@ public class ExerciseMethodTest
             Id = Guid.NewGuid(),
             Description = "Description",
             Name = "Name",
+            Repetitions = 3,
             GroupExercises = new List<GroupExercise>(),
         };
         var x = repo.Object;
@@ -31,6 +32,7 @@ public class ExerciseMethodTest
             Id = Guid.NewGuid(),
             Description = "Description",
             Name = "Name",
+            Repetitions = 3,
             GroupExercises = new List<GroupExercise>(),
         };
         var x = repo.Object;

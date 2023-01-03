@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SportClub.Application.Repository.CoachGroupRepository">
+    <Position X="11.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Repository\CoachGroupRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SportClub.Application.Repository.CoachRepository">
+    <Position X="14.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAIABAAAAAAAAAAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>Repository\CoachRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SportClub.Application.Repository.CompetitorRepository">
+    <Position X="16.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIABAAAAAAAAAAAAAAAgAAAAAAAKA=</HashCode>
+      <FileName>Repository\CompetitorRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SportClub.Application.Repository.ExerciseRepository">
+    <Position X="8" Y="9.75" Width="1.5" />
+    <InheritanceLine Type="SportClub.Application.Repository.Repository&lt;TEntity&gt;" FixedToPoint="true">
+      <Path>
+        <Point X="12.25" Y="9.151" />
+        <Point X="12.25" Y="9.375" />
+        <Point X="8.812" Y="9.375" />
+        <Point X="8.812" Y="9.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIABAAAAAAAAAAAAAAAgAAAAAAAKA=</HashCode>
+      <FileName>Repository\ExerciseRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SportClub.Application.Repository.GroupRepository">
+    <Position X="14.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Repository\GroupRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SportClub.Application.Repository.Repository&lt;TEntity&gt;">
+    <Position X="11.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAAAAACAAAAAGAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>Repository\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="SportClub.Application.Repository.UserRepository">
+    <Position X="9.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\UserRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.221" />
+  </Class>
+  <Interface Name="SportClub.Application.Interface.ICoachGroupsRepository">
+    <Position X="5.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Interface\ICoachGroupRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SportClub.Application.Interface.ICoachRepository">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAABAAAAAAIABAAAAAAAAAAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>Interface\ICoachRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SportClub.Application.Interface.ICompetitorRepository">
+    <Position X="12" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAIABAAAAAAAAAAAAAAAgAAAAAAAKA=</HashCode>
+      <FileName>Interface\ICompetitorRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SportClub.Application.Interface.IExerciseRepository">
+    <Position X="14.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAIABAAAAAAAAAAAAAAAgAAAAAAAKA=</HashCode>
+      <FileName>Interface\IExerciseRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SportClub.Application.Interface.IGroupRepository">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Interface\IGroupRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SportClub.Application.Interface.IRepository&lt;TEntity&gt;">
+    <Position X="11" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAAAAAAAAAAACAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>Interface\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SportClub.Application.Interface.IUserRepository">
+    <Position X="16.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interface\IUserRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
