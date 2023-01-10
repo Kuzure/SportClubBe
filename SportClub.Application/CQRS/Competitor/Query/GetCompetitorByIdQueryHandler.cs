@@ -5,7 +5,7 @@ using SportClub.Infrastructure.Models;
 
 namespace SportClub.Application.CQRS.Competitor.Query;
 
-public class GetCompetitorByIdQueryHandler: IRequestHandler<GetCompetitorByIdQuery,CompetitorListModel>
+public class GetCompetitorByIdQueryHandler: IRequestHandler<GetCompetitorByIdQuery,CompetitorDetail>
 {
     private readonly ICompetitorRepository _competitorRepository;
     private readonly IMapper _mapper;
@@ -15,10 +15,10 @@ public class GetCompetitorByIdQueryHandler: IRequestHandler<GetCompetitorByIdQue
         _competitorRepository = competitorRepository;
         _mapper = mapper;
     }
-    public async Task<CompetitorListModel> Handle(GetCompetitorByIdQuery request, CancellationToken cancellationToken)
+    public async Task<CompetitorDetail> Handle(GetCompetitorByIdQuery request, CancellationToken cancellationToken)
     {
         var entity = await _competitorRepository.GetById(request.Id);
-        var result = _mapper.Map<CompetitorListModel>(entity);
+        var result = _mapper.Map<CompetitorDetail>(entity);
         return result;
     }
 }

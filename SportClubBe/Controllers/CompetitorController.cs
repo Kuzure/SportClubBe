@@ -23,7 +23,7 @@ namespace SportClub.Api.Controllers
         public async Task<ActionResult> Create([FromBody] UpdateCompetitorCommand command) =>
             await ExecuteCommand(async () => await Mediator.Send(command));
         [HttpGet("")]
-        [ProducesResponseType(typeof(Response<CompetitorListModel>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Response<CompetitorDetail>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetCompetitorById([FromQuery] GetCompetitorByIdQuery query) =>
             await ExecuteQuery(async () => await Mediator.Send(query));
         [HttpGet("pageable")]
