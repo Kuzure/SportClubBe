@@ -11,7 +11,7 @@ public class CompetitorData
 {
     public Guid? Id { get; set; } = null!;
     public bool IsPaid { get; set; }
-    public DateTime MedicalExaminationExpiryDate { get; set; }
+    public DateTime? MedicalExaminationExpiryDate { get; set; }
 }
 
 public class IdentityData
