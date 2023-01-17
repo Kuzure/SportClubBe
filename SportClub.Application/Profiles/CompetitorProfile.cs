@@ -11,6 +11,7 @@ namespace SportClub.Application.Profiles
         public CompetitorProfile()
         {
             CreateMap<Competitor, CompetitorListModel>()
+                .ForMember(dest => dest.MedicalExaminationExpiryDate, opt => opt.MapFrom(src => src.MedicalExaminationExpiryDate.AddHours(2)))
                 .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.Identity.FirstName))
                 .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.Identity.LastName))
                 .ForMember(dest => dest.DateOfBirth, opt => opt.MapFrom(src => src.Identity.DateOfBirth.AddHours(2)))
@@ -22,11 +23,12 @@ namespace SportClub.Application.Profiles
             CreateMap<Competitor, AddCompetitorCommand>()
                 .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.Identity.FirstName))
                 .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.Identity.LastName))
-                .ForMember(dest => dest.DateOfBirth, opt => opt.MapFrom(src => src.Identity.DateOfBirth.AddHours(2)))
+                .ForMember(dest => dest.DateOfBirth, opt => opt.MapFrom(src => src.Identity.DateOfBirth))
                 .ForMember(dest => dest.Degree, opt => opt.MapFrom(src => src.Identity.Degree))
                 .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.Identity.PhoneNumber))
                 .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Identity.Gender)).ReverseMap();
             CreateMap<Competitor, CompetitorModel>()
+                .ForMember(dest => dest.MedicalExaminationExpiryDate, opt => opt.MapFrom(src => src.MedicalExaminationExpiryDate.AddHours(2)))
                 .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.Identity.FirstName))
                 .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.Identity.LastName))
                 .ForMember(dest => dest.DateOfBirth, opt => opt.MapFrom(src => src.Identity.DateOfBirth.AddHours(2)))
