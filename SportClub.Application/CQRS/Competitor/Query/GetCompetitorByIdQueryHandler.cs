@@ -23,7 +23,7 @@ public class GetCompetitorByIdQueryHandler : IRequestHandler<GetCompetitorByIdQu
         {
             FirstName = entity.Identity.FirstName,
             LastName = entity.Identity.LastName,
-            DateOfBirth = entity.Identity.DateOfBirth,
+            DateOfBirth = entity.Identity.DateOfBirth.AddHours(2),
             PhoneNumber = entity.Identity.PhoneNumber,
             Degree = EnumExtensionMethodsHelpers. GetEnumDescription(entity.Identity.Degree),
             Gender = EnumExtensionMethodsHelpers.GetEnumDescription(entity.Identity.Gender),
@@ -32,18 +32,23 @@ public class GetCompetitorByIdQueryHandler : IRequestHandler<GetCompetitorByIdQu
         {
             Id = entity.Id,
             IsPaid = entity.IsPaid,
-            MedicalExaminationExpiryDate = entity.MedicalExaminationExpiryDate
+            MedicalExaminationExpiryDate = entity.MedicalExaminationExpiryDate.AddHours(2),
         };
-        var group = new GroupData()
+        var group = new GroupData();
+        if (entity.GroupId!=null)
         {
-            GroupId = entity.GroupId,
-            GroupName = entity.Group.Name
-        };
+             group = new GroupData()
+            {
+                GroupId = entity.GroupId,
+                GroupName = entity.Group.Name
+            };
+        }
+
         CompetitorDetail result = new CompetitorDetail()
         {
             IdentityData = identityData,
             CompetitorData = competitor,
-            GroupData = group
+            GroupData = group == null ? null : group,
         };
         return result;
     }

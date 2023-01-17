@@ -24,7 +24,7 @@ public class UpdateCoachCommandHandler: IRequestHandler<UpdateCoachCommand, Spor
         coach.Identity.FirstName = request.FirstName;
         coach.Identity.LastName = request.LastName;
         if (request.Gender != null) coach.Identity.Gender = (Gender)Enum.Parse(typeof(Gender), request.Gender, true);
-        coach.Identity.DateOfBirth = request.DateOfBirth;
+        coach.Identity.DateOfBirth = request.DateOfBirth.AddHours(2);
         coach.Identity.PhoneNumber = request.PhoneNumber;
         await _coachRepository.Update(coach);
         await _dbContext.SaveChangesAsync(cancellationToken);

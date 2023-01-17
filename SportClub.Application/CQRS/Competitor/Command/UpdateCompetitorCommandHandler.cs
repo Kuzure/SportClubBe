@@ -21,14 +21,14 @@ public class UpdateCompetitorCommandHandler: IRequestHandler<UpdateCompetitorCom
         var competitor = await _competitorRepository.GetById(request.Id);
         if (competitor == null) return default!;
         competitor.GroupId = request.GroupId;
-        competitor.MedicalExaminationExpiryDate = request.MedicalExaminationExpiryDate;
+        competitor.MedicalExaminationExpiryDate = request.MedicalExaminationExpiryDate.AddHours(2);
         competitor.IsPaid = request.IsPaid;
         competitor.Identity.FirstName = request.FirstName;
         competitor.Identity.LastName = request.LastName;
         if (request.Degree != null)
             competitor.Identity.Degree = (Degree)Enum.Parse(typeof(Degree), request.Degree, true);
         competitor.Identity.Gender = (Gender)Enum.Parse(typeof(Gender), request.Gender, true);
-        competitor.Identity.DateOfBirth = request.DateOfBirth;
+        competitor.Identity.DateOfBirth = request.DateOfBirth.AddHours(2);
         competitor.Identity.PhoneNumber = request.PhoneNumber;
         await _competitorRepository.Update(competitor);
         await _dbContext.SaveChangesAsync();
